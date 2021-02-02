@@ -1,0 +1,289 @@
+---
+title: '<span style="font-size: 110%;">R</span><span style="font-size:100%">2D2</span>  <span style="font-size:55%"><i>[and friends]</span>'
+subtitle: '<em>TO THE RESCUE</em>'
+output: 
+  html_document:
+    css: "glow.css"
+---
+
+```{r, include=F}
+#Colors: https://mn.gov/portal/brand/style-guide/colors/
+```
+
+<br><br>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap&text=R2D2SAVESTHEDAY');
+
+body {
+  background-color:   #f1e0c4; /*#008EAA; #f5f5f5 #222d32 */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  width: 1600px;
+  height: 1000px;
+}
+
+h1.title {
+  font-family: 'Audiowide', 'Poller One', 'Montserrat', sans-serif;
+  font-size: 72px;
+  color:  white;  /*#f9d71c; #F8E81C; #220e0f; #CEB67E;*/
+  margin-top: 12px;
+  margin-left: -252px;
+}
+
+h2 {
+   text-align: left;
+   margin-top: -2px;
+   margin-bottom: 8px;
+   font-weight: bold;
+   font-size: 120%;
+   color:  #008EAA;  /*#003865; */
+}
+
+.subtitle {
+  font-family: 'Audiowide', 'Poller One', 'Montserrat', sans-serif;
+  font-size: 44px;
+  color:  white;  /*#f9d71c; #F8E81C; #220e0f; #CEB67E;*/
+  margin-top: -12px;
+  margin-left: -252px;
+}
+
+.div1 {
+  position: absolute;
+  height: 350px;
+  width: 800px;
+  margin-left: 60px;
+  /*border: 1px solid gray;*/
+  perspective: 500px;
+}
+
+.card-out {
+  position: absolute;
+  height: 350px;
+  width: 600px;
+  margin-left: 60px;
+  /*border: 1px solid gray;*/
+  perspective: 500px;
+}
+
+.div2 {
+  transform-style: preserve-3d;
+  transform: rotateX(35deg);
+}
+
+.card {
+  width: 138px;
+  min-height: 200px;
+  max-height: 200px;
+  margin-top: 0;
+  margin-left: 0;
+  border-radius: 8px;
+  position: absolute;
+  left: 34px; 
+  top: 280px;
+  border: solid 2px #eee; /*#003865; */
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2); 
+  background-color: white; /*#e3d2b6;*/
+  overflow: hidden;
+}
+
+.short {
+  min-height: 70px;
+  max-height: 160px;
+}
+
+.shortcard {
+  max-height: 75px;
+}
+
+
+.gray {
+  color: #444458e0;
+}
+
+h2.gray {
+
+  color: #31464a88;
+}
+
+.card:hover {
+  border: inherit;
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,0.3); 
+}
+
+.card.gray:hover {
+  border: inherit;
+  box-shadow: inherit;
+}
+
+.closed {
+  background-color: #676666;
+  font-family: 'Poller One';
+}
+
+.top-card {
+  overflow: hidden;
+  max-height: 80px;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 10px;
+  border-bottom: solid 2px #eee;
+}
+
+.bottom-card {
+  padding: 9px;
+  padding-top: 5px;
+  padding-bottom: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+img {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.lildot {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  border-radius: 50%;
+  display: inline-block;
+  border: solid 9px #e3d2b6;
+}
+
+.bigdot {
+  height: 210px;
+  width: 210px;
+}
+
+.planet {
+  height: 55px;
+  width: 55px;
+}
+
+.labels {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 800;
+  /*background-color: white; #e3d2b6;*/
+  border-radius: 3px;
+  padding: 6px;
+  padding-right: 7px;
+}
+
+.player {
+  font-size: 12px;
+  height: 21px;
+  color: black;
+  padding: 3px;
+  padding-right: 5px;
+}
+
+.lines {
+  position: absolute;
+  width: 110px;
+  height: 4px;
+  background-color: #cecd97;
+  z-index: -1200;
+}
+
+.jedi {
+  height: 5px;
+  background-color: #f0f7f7; 
+  border: 2px solid #3fb9e9;
+}
+
+.dashed {
+  background-color: #f1e0c4;
+  border-bottom: 3px dashed #cecd97;
+}
+
+.dotted {
+  background-color: #f1e0c4;
+  border-bottom: 3px dotted #9a9a7cc7;
+}
+
+.vline {
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background-color: #888;
+}
+
+.footnote {
+  font-size: 11px;
+  margin-top: 800px;
+  text-align: right;
+  margin-left: 200px;
+}
+
+
+a, a:active, a:hover, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+</style>
+  
+  
+```{r, include=F}
+library(icon)
+
+source("/home/dk/Desktop/new/skills_map/R/cards_html.R")
+```
+
+<span style="color: #f1e0c4;">`r icon::fa("lock")`</span>
+
+<div class="saber"></div>
+
+<div class="vline dotted" style="left: 386px; top: 494px; height: 87px; border-left: 3px dotted #9a9a7cc7; background-color: #f1e0c4;"></div>
+<div class="lines dotted" style="left: 386px; top: 537px; width: 248px;"></div>
+<div class="vline dotted" style="left: 633px; top: 428px; height: 107px; border-left: 3px dotted #9a9a7cc7; background-color: #f1e0c4;"></div>
+
+<div class="vline dotted" style="left: 634px; top: 113px; height: 126px; border-left: 3px dotted #9a9a7cc7; background-color: #f1e0c4;"></div>
+<div class="lines dotted" style="left: 640px; top: 162px; width: 174px;"></div>
+ 
+<div class="vline dotted" style="left: 924px; top: 292px; height: 75px; border-left: 3px dotted #9a9a7cc7; background-color: #f1e0c4;"></div>
+ 
+<div class="lines jedi" style="left: 902px; top: 807px;"></div>
+ 
+<span class="lildot saber" style="left: 110px; top: 360px;  border: solid 2px #cecd97; background-color: white; /*#cecd97;*/"></span>
+<div class="labels" style="left: 117px; top: 386px; color: #736b69;">
+<a href="https://github.com/MPCA-data/tidytuesdays/blob/master/show-n-tell/R2D2_tracker/stage_0.MD#start-here">START</a>
+</div>
+
+
+```{r, results="asis", echo=F}
+# Wampa
+add_card(n = 1, left=317, top=290, text='Find the right <b> time </b> to rescue Luke!', is_linked = F)
+
+# TaunTaun
+add_card(n = 1, left=317, top=584, text='', title="TAUNTAUN RACE ", image="/home/dk/Pictures/tauntaun.png", shortcard = T, gray = T)
+
+#AT-AT
+add_card(n = 2, left=573, top=222, title="AT-AT INTERFERENCE", text='Uncover the radio frequency hidden in <em> Excel </em>...', image = "/home/dk/Pictures/at-at.png", expand = "124%", vjust=0, is_linked=F, gray=T)
+
+# Yoda
+add_big_circle(top=76, left=820, image="/home/dk/Pictures/yoda.png", color="#d3b68e", planet_color="#925f28")
+
+# Locked level
+add_locked_card(left=856, top=370)
+
+add_player(left=129, top=344, p_name="R2D2", color="#c4e60a9c", flip=T)
+add_player(left=96, top=334, p_name="MiMi", color="#371ba285", flip=T)
+add_player(left=44, top=352, p_name="KMEL", color="#1ad45985", flip=T)
+add_player("bb8", left=88, top=406, p_name="DNAG", color="#e47917b3", width = 37, layer = 104)
+
+#add_spinner()
+```
+
+<br><br><br>
+
+<p class="footnote">
+_&#174; This project funded by a generous grant from the Galactic Empire_
+</p> 
+
