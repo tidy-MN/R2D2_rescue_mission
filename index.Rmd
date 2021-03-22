@@ -40,7 +40,7 @@ h2 {
    margin-top: -2px;
    margin-bottom: 8px;
    font-weight: bold;
-   font-size: 120%;
+   font-size: 110%;
    color:  #008EAA;  /*#003865; */
 }
 
@@ -78,7 +78,7 @@ h2 {
 .card {
   width: 138px;
   min-height: 200px;
-  max-height: 200px;
+  max-height: 210px;
   margin-top: 0;
   margin-left: 0;
   border-radius: 8px;
@@ -185,7 +185,8 @@ img {
   padding: 2px;
   padding-right: 5px;
   color: black;
-  font-size: 12px;
+  font-size: 11px;
+  font-family: 'monospace';
 }
 
 .lines {
@@ -212,6 +213,12 @@ img {
   border-bottom: 3px dotted #9a9a7cc7;
 }
 
+.small-text {
+   font-size: 95%;
+   margin-top: 12px;
+   margin-bottom: 20px;
+}
+
 .vline {
   position: absolute;
   width: 2px;
@@ -222,7 +229,7 @@ img {
 
 .footnote {
   font-size: 11px;
-  margin-top: 800px;
+  margin-top: 760px;
   text-align: right;
   margin-left: 200px;
 }
@@ -243,10 +250,11 @@ source("/home/dk/Desktop/new/skills_map/R/cards_html.R")
 ```
 
 <span style="color: #f1e0c4;">`r icon::fa("lock")`</span>
+
 <div class="saber"></div>
 
 ```{r, eval=F, echo=F}
-#
+#<div class="lines jedi" style="left: 902px; top: 807px;"></div>
 #
 ```
 
@@ -259,8 +267,7 @@ source("/home/dk/Desktop/new/skills_map/R/cards_html.R")
  
 <div class="vline dotted" style="left: 924px; top: 292px; height: 75px; border-left: 3px dotted #9a9a7cc7; background-color: #f1e0c4;"></div>
  
-<div class="lines jedi" style="left: 902px; top: 807px;"></div>
- 
+
 <span class="lildot saber" style="left: 110px; top: 360px;  border: solid 2px #cecd97; background-color: white; /*#cecd97;*/"></span>
 
 <div class="labels" style="left: 117px; top: 386px; color: #736b69;">
@@ -271,14 +278,16 @@ source("/home/dk/Desktop/new/skills_map/R/cards_html.R")
 ```{r, results="asis", echo=F}
 # Wampa
 add_card(n = 1, left=317, top=290, text='Find the right <b> time </b> to rescue Luke!', is_linked=T,
+         functions = "read_csv()",  num_top = 173,
          link = "https://github.com/MPCA-data/tidytuesdays/blob/master/show-n-tell/R2D2_missions/stage_1.MD#stage-1---a-wampa-rumpus")
 
 # TaunTaun
 add_card(n = 1, left=317, top=584, text='', title="TAUNTAUN RACE ", image="/home/dk/Pictures/tauntaun.png", shortcard = T, gray = T)
 
 #AT-AT
-add_card(n = 2, left=573, top=222, title="AT-AT INTERFERENCE", text='Decode the radio frequencies to jam the AT-ATs', image = "/home/dk/Pictures/at-at.png", expand = "124%", vjust=0, is_linked=T, gray=T,
-         link = "https://github.com/MPCA-data/tidytuesdays/blob/master/show-n-tell/R2D2_missions/stage_2.MD#stage-2---at-at-interference")
+add_card(n = 2, left=573, top=222, title="AT-AT INTERFERENCE", text='Decode the <b>radio</b> frequencies before...', image = "/home/dk/Pictures/at-at.png", expand = "124%", vjust=0, is_linked=T, gray=T,
+         functions = "select(), arrange()",
+         link = "https://github.com/MPCA-data/tidytuesdays/blob/master/show-n-tell/R2D2_missions/stage_2.MD#stage-2--at-at-radio-frequencies")
 
 # Yoda
 add_big_circle(top=76, left=820, image="/home/dk/Pictures/yoda.png", color="#d3b68e", planet_color="#925f28")
