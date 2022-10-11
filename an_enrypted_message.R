@@ -3,6 +3,20 @@ library(tidyr)
 library(dplyr)
 library(caesar)
 
+# Day 3 Idea: Jedi forces have information that indicate the Rebels have plans
+# to abduct Princess Leigh. Jedi have intercepted an encrypted message, and
+# have gathered intelligence from eyewitness accounts of the conspirators.
+# Witness's overheard mystery person one as saying there home world was "Concord Dawn"
+# Mystery person 2 was described as being heavy, greater than 100 mass, not too tall less than
+# 200 meters tall and having brown skin color.
+# The encrypted message can be decoded by combining the two seed codes from each mystery person.
+
+
+
+# Built-in Datasets
+# Using package functions
+# Filter function
+
 starwars <- as.data.frame(dplyr::starwars)
 starwars$seed <- sample(1000, size = nrow(starwars), replace = TRUE)
 starwars <- group_by(starwars, homeworld)
